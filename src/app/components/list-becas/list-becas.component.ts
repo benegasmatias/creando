@@ -12,8 +12,11 @@ export class ListBecasComponent implements OnInit {
 
   ngOnInit() {
     this.becasService.getBecas().subscribe(
-      (data)=>this.becas = data
+      (data)=>{
+        console.log(data)
+        this.becas = data}
     )
+    
   }
 
 }

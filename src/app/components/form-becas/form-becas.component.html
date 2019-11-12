@@ -1,1 +1,41 @@
-<p>form-becas works!</p>
+
+
+  <p>
+    <mat-form-field appearance="outline">
+      <mat-label>Apellido</mat-label>
+      <input matInput placeholder="Apellido">
+      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+      <mat-hint>Benegas</mat-hint>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field appearance="outline">
+      <mat-label>Nombre</mat-label>
+      <input matInput placeholder="Nombre">
+      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+      <mat-hint>Wilson</mat-hint>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field appearance="outline">
+      <mat-label>Dni</mat-label>
+      <input matInput placeholder="Dni">
+      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+      <mat-hint>37888555</mat-hint>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field appearance="outline">
+      <mat-label>Registro</mat-label>
+      <input matInput placeholder="Registro">
+      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+      <mat-hint>18969</mat-hint>
+    </mat-form-field>
+  </p>
+
+  <mat-form-field>
+    <mat-select placeholder="Select me">
+      <mat-option *ngFor="let c of carreras" value="c.id">{{c.carrera}}</mat-option>
+    </mat-select>
+    <mat-hint  >Here's the dropdown arrow ^</mat-hint>
+  </mat-form-field>
