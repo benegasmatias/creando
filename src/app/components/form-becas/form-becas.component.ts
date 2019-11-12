@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {BecasService} from '../../services/becas.service'
+import {BecasService} from '../../services/becas.service';
 import { persona } from 'src/app/models/persona';
 
 @Component({
@@ -9,16 +9,13 @@ import { persona } from 'src/app/models/persona';
 })
 export class FormBecasComponent implements OnInit {
 
-  carreras = [];
+ 
   constructor(private becaService:BecasService) { }
 
   ngOnInit() {
     //cargar el arreglo carrera
-    this.becaService.getCarrera().subscribe((data)=>{this.carreras= data});
+    
   }
 
-  addPersona(persona:persona){
-    this.becaService.addPersona(persona);
-  }
 
 }

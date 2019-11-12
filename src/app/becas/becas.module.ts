@@ -7,6 +7,7 @@ import { BecasRoutingModule } from './becas-routing.module';
 import { NavegadorComponent } from '../navegador/navegador.component';
 import { FormBecasComponent } from '../components/form-becas/form-becas.component';
 import { ListBecasComponent } from '../components/list-becas/list-becas.component';
+import { FormPersonaComponent } from '../components/form-persona/form-persona.component';
 
 //material
 import { LayoutModule } from '@angular/cdk/layout';
@@ -59,7 +60,8 @@ import {MatTreeModule} from '@angular/material/tree';
   declarations: [
     NavegadorComponent,
     FormBecasComponent,
-    ListBecasComponent],
+    ListBecasComponent,
+    FormPersonaComponent],
   imports: [
     CommonModule,
     BecasRoutingModule,
