@@ -1,0 +1,9 @@
+<div *ngIf="becas.length >0; else noBecas ">
+<mat-list role = "list" > 
+  <mat-list-item *ngFor="let beca of becas" role = "listitem" > {{beca.numero}} </mat-list-item > 
+</mat-list >
+</div>
+
+<ng-template #noBecas>
+<a >Cargando becas..</a>
+</ng-template>
