@@ -1,9 +1,17 @@
+import { Reference, DocumentReference } from '@angular/fire/firestore';
+import { carrera } from './carrera';
+
 export interface persona{
     id?:string
-    dni?:number
+    //alumno
+    dni?:string
     apellido?:string
-    nomber?:string
-    registro?:number
-    cantidadBecas?:number
-    id_beca?:string
+    nombre?:string
+    registro?:string
+    carrera?:DocumentReference
+    //beca
+    num_beca?:string
+    cantidadBecas?:string
+    mes?:string
+    
 }

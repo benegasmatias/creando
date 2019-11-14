@@ -4,7 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import {NavegadorComponent} from '../navegador/navegador.component';
 import {FormBecasComponent} from '../components/form-becas/form-becas.component';
 import {ListBecasComponent} from '../components/list-becas/list-becas.component';
-import {FormPersonaComponent} from '../components/form-persona/form-persona.component'
+
 
 
 const routes: Routes = [
@@ -19,10 +19,6 @@ const routes: Routes = [
     {
       path:'becasList',
       component: ListBecasComponent
-    },
-    {
-      path:'estudianteForm',
-      component: FormPersonaComponent
     }
    ]
  }

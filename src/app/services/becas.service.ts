@@ -85,15 +85,32 @@ export class BecasService {
 
   deleteBeca(beca: beca) {
     //busca el documento
-    this.becasDoc = this.db.doc(`becas/${beca.id}`);
+    this.becasDoc = this.db.doc(`becasDeFotocopias/${beca.id}`);
     //borra la beca segun su id
     this.becasDoc.delete();
+  }
+  
+  deletePersona(persona:persona) {
+    //busca el documento
+    this.personaDoc= this.db.doc(`Persona/${persona.id}`);
+    //borra la beca segun su id
+    this.personaDoc.delete();
   }
 
   addBeca(beca: beca) {
     this.becasCollection.add(beca);
   }
+
   addPersona(persona:persona){
     this.personsCollection.add(persona);
   }
+ becaPorMes(mes){
+   return this.becasCollection.ref.where("mes","==",mes).get().then(function(querySnapshot) {
+    querySnapshot.forEach(function(doc) {
+        // doc.data() is never undefined for query doc snapshots
+        console.log(doc.id, " => ", doc.data());
+    });
+})
+
+}
 }

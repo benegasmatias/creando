@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
+import { FormsModule }   from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule, NgModel } from '@angular/forms';
 
 import { BecasRoutingModule } from './becas-routing.module';
 
@@ -7,7 +9,6 @@ import { BecasRoutingModule } from './becas-routing.module';
 import { NavegadorComponent } from '../navegador/navegador.component';
 import { FormBecasComponent } from '../components/form-becas/form-becas.component';
 import { ListBecasComponent } from '../components/list-becas/list-becas.component';
-import { FormPersonaComponent } from '../components/form-persona/form-persona.component';
 
 //material
 import { LayoutModule } from '@angular/cdk/layout';
@@ -60,8 +61,7 @@ import {MatTreeModule} from '@angular/material/tree';
   declarations: [
     NavegadorComponent,
     FormBecasComponent,
-    ListBecasComponent,
-    FormPersonaComponent],
+    ListBecasComponent],
   imports: [
     CommonModule,
     BecasRoutingModule,
@@ -111,7 +111,10 @@ import {MatTreeModule} from '@angular/material/tree';
     MatTooltipModule,
     MatTreeModule,
     PortalModule,
-    ScrollingModule
+    ScrollingModule,
+    ReactiveFormsModule,
+    FormsModule,
+
   ],
   bootstrap: [NavegadorComponent]
 })
