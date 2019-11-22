@@ -1,0 +1,138 @@
+import { Injectable } from '@angular/core';
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore';
+
+//models
+import { beca } from '../models/beca';
+import { persona } from '../models/persona';
+import { carrera } from '../models/carrera';
+
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators'
+
+@Injectable({
+  providedIn: 'root'
+})
+export class BecasService {
+  //becasDeFotocopias
+  becasCollection: AngularFirestoreCollection<beca>;
+  becas: Observable<beca[]>;
+  becasDoc: AngularFirestoreDocument<beca>;
+
+  //Personas
+  personsCollection: AngularFirestoreCollection<persona>;
+  personas: Observable<persona[]>;
+  personaDoc: AngularFirestoreDocument<persona>;
+
+  //carreras
+  carrerasCollection: AngularFirestoreCollection<carrera>;
+  carreras: Observable<carrera[]>;
+  carreraDoc: AngularFirestoreDocument<carrera>;
+
+  constructor(private db: AngularFirestore) {
+    //this.becas= this.db.collection('becasDeFotocopias').valueChanges();
+
+    //Esto se hace para poder traer el id del objeto
+    this.becasCollection = this.db.collection('becasDeFotocopias');
+
+    this.becas = this.becasCollection.snapshotChanges().pipe(map(actions => {
+      return actions.map(a => {
+        const data = a.payload.doc.data() as beca;
+        data.id = a.payload.doc.id;
+        return data;
+      })
+    }));
+
+    //Personas
+
+    this.personsCollection = this.db.collection('Personas');
+
+    this.personas = this.personsCollection.snapshotChanges().pipe(map(actions => {
+      return actions.map(a => {
+        const data = a.payload.doc.data() as persona
+        data.id = a.payload.doc.id;
+        return data
+      })
+    }))
+    //carreras
+
+    this.carrerasCollection = this.db.collection('Carreras');
+
+    this.carreras = this.carrerasCollection.snapshotChanges().pipe(map(actions => {
+      return actions.map(a => {
+        const data = a.payload.doc.data() as carrera
+        data.id = a.payload.doc.id;
+        return data
+      })
+    }))
+    //snapshotChanges() trae una nueva actualizacion de los datos cuando cambien
+    //pipe metodo que se utiliza para poder procesar los datos cada vez que vienen
+    // map aplica una funcion a todos los componentes del arreglo.
+
+
+  }
+
+
+
+
+
+  getBecas() {
+    return    this.becas = this.becasCollection.snapshotChanges().pipe(map(actions => {
+      return actions.map(a => {
+        const data = a.payload.doc.data() as beca;
+        data.id = a.payload.doc.id;
+        return data;
+      })
+    }));
+  }
+  //crea y retorna un observable cada vez que es llamado
+  getPersona() {
+    return  this.personas = this.personsCollection.snapshotChanges().pipe(map(actions => {
+      return actions.map(a => {
+        const data = a.payload.doc.data() as persona
+        data.id = a.payload.doc.id;
+        return data
+      })
+    }))
+  }
+  getCarrera() {
+    return     this.carreras = this.carrerasCollection.snapshotChanges().pipe(map(actions => {
+      return actions.map(a => {
+        const data = a.payload.doc.data() as carrera
+        data.id = a.payload.doc.id;
+        return data
+      })
+    }))
+  }
+
+
+  deleteBeca(beca: beca) {
+    //busca el documento
+    this.becasDoc = this.db.doc(`becasDeFotocopias/${beca.id}`);
+    //borra la beca segun su id
+    this.becasDoc.delete();
+  }
+  
+  deletePersona(persona:persona) {
+    //busca el documento
+    this.personaDoc= this.db.doc(`Persona/${persona.id}`);
+    //borra la beca segun su id
+    this.personaDoc.delete();
+  }
+
+  addBeca(beca: beca) {
+    this.becasCollection.add(beca);
+  }
+
+  addPersona(persona:persona){
+    this.personsCollection.add(persona);
+  }
+ becaPorMes(mes){
+   return this.becasCollection.ref.where("mes","==",mes).get().then(function(querySnapshot) {
+    querySnapshot.forEach(function(doc) {
+        // doc.data() is never undefined for query doc snapshots
+        console.log(doc.id, " => ", doc.data());
+    });
+})
+
+}
+}
